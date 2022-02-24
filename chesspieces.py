@@ -1,20 +1,17 @@
 import numpy as np
 class Chess_Pieces:
-    def __init__(self, position, alive, colour):
+    def __init__(self, position, colour):
         self.position=position
-        self.alive=alive
         self.colour=colour
 
 class Pawn(Chess_Pieces):
-    def __init__(self, position, alive, colour):
+    def __init__(self, position, colour):
         self.position=position
-        self.alive=alive
         self.colour=colour
 
 class Bishop(Chess_Pieces):
-    def __init__(self, position, alive, colour):
+    def __init__(self, position, colour):
         self.position=position
-        self.alive=alive
         self.colour=colour
     def legal(self, attempt, occupied):
         #diagonal
@@ -35,9 +32,8 @@ class Bishop(Chess_Pieces):
             return(False)
 
 class Rook(Chess_Pieces):
-    def __init__(self, position, alive, colour):
+    def __init__(self, position,  colour):
         self.position=position
-        self.alive=alive
         self.colour=colour
     def legal(self, attempt, occupied): 
         if (self.position[1]-attempt[1])*(self.position[0]-attempt[0])==0:
@@ -60,9 +56,8 @@ class Rook(Chess_Pieces):
             return(False)
 
 class Queen(Bishop, Rook):
-    def __init__(self, position, alive, colour):
+    def __init__(self, position,  colour):
         self.position=position
-        self.alive=alive
         self.colour=colour
     def legal(self, attempt, occupied):
         return(Bishop.legal(self, attempt, occupied) or Rook.legal(self, attempt, occupied))
